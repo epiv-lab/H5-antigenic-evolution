@@ -17,3 +17,6 @@ map_making
  ├───make_maps.R
  └───visualize_maps.R
 ```
+
+Other projects can directly use the maps existing in output of map_making to prevent redundant and outdated data floating around.
+Keeping only best optimizations for maps since file size limitation < 25MB
