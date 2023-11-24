@@ -29,8 +29,8 @@ if __name__=="__main__":
     df_sr = pd.read_csv(f"./output/sr_ppc_data_{npieces}.csv", header=0,
                         index_col=0)
 
-    pc_data_ag = df_ag.iloc[:,:3].values
-    pc_data_sr = df_sr.iloc[:,:3].values
+    pc_data_ag = df_ag.iloc[:,:4].values
+    pc_data_sr = df_sr.iloc[:,:4].values
 
     fig1,ax1 = plt.subplots(1,1, figsize=(0.175*nag+1, 7.5))
 
