@@ -1,5 +1,5 @@
 source('./utils.R')
-library(ablandscapes)
+library(r3js)
 
 
 convert_map_to_data3js <- function(

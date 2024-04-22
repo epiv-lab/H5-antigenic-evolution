@@ -98,8 +98,8 @@ setup <- function(
       axes = "z",
       sides = c("x","y"),
       at = list("z"=zlim[1]:zlim[2]),
-      lwd = pars$sidegrid.lwd,
-      col = pars$sidegrid.col,
+      lwd = 1,
+      col = "grey95",
     )
   }
   
@@ -111,8 +111,8 @@ setup <- function(
         x = c(x, x),
         y = range(ylim),
         z = c(zlim[1], zlim[1]),
-        col = pars$col.grid,
-        lwd = pars$lwd.grid,
+        col = "grey95",
+        lwd = 1,
         xpd = TRUE,
       )
     }
@@ -122,8 +122,8 @@ setup <- function(
         x = range(xlim),
         y = c(y, y),
         z = c(zlim[1], zlim[1]),
-        col = pars$col.grid,
-        lwd = pars$lwd.grid,
+        col = "grey95",
+        lwd = 1,
         xpd = TRUE,
       )
     }

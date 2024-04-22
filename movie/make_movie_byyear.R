@@ -1,6 +1,5 @@
 library(Racmacs)
 library(r3js)
-library(ablandscapes)
 library(splines)
 library(webshot2)
 source('convert_map_to_data3js.R')
