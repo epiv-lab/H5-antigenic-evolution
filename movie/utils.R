@@ -67,9 +67,7 @@ setup <- function(
     options
 ){
   
-  # Get the plot pars
-  pars <- do.call(ablandscape.par, options)
-  
+
   # Open a new r3js plot
   data3js <- r3js::plot3js.new()
   

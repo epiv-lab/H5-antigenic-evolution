@@ -76,10 +76,7 @@ convert_map_to_data3js <- function(
   
   sr_years = lapply(lapply(srNames(map), get_year), as.integer)
                     
-  # Get the plot pars
-  pars <- do.call(ablandscape.par, options)
-  ## Add antigens and sera
-  
+
   if (is.null(clades_to_add) && (is.null(years_to_add))){
     stop("clade_to_add or years_to_add must be supplied.")
   }
