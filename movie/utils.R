@@ -62,8 +62,8 @@ setup <- function(
     ylim,
     zlim,
     aspect.z,
-    show.sidegrid = TRUE,
-    show.basegrid = TRUE,
+    show.grid = TRUE,
+    show.box = TRUE,
     options
 ){
   
@@ -81,51 +81,27 @@ setup <- function(
   )
   
   ## Set box
-  if (show.sidegrid) {
+  if (show.box) {
     data3js <- r3js::box3js(
       data3js,
       col   = "grey80",
-      sides = c("x","y")
+      sides = c("x","y","z")
     )
   }
   
   ## Add a side grid
-  if (show.sidegrid) {
+  if (show.grid) {
     data3js <- r3js::grid3js(
       data3js,
-      axes = "z",
-      sides = c("x","y"),
-      at = list("z"=zlim[1]:zlim[2]),
+      sides = c("x", "y", "z"),
+      axes = c("x", "y", "z"),
+      at = list("z"=zlim[1]:zlim[2],"x"=xlim[1]:xlim[2], "y"=ylim[1]:ylim[2] ),
       lwd = 1,
       col = "grey95",
     )
   }
   
 
-  if (show.basegrid){
-    for(x in seq(from = xlim[1], to = xlim[2])){
-      data3js <- r3js::lines3js(
-        data3js,
-        x = c(x, x),
-        y = range(ylim),
-        z = c(zlim[1], zlim[1]),
-        col = "grey95",
-        lwd = 1,
-        xpd = TRUE,
-      )
-    }
-    for(y in seq(from = ylim[1], to = ylim[2])){
-      data3js <- r3js::lines3js(
-        data3js,
-        x = range(xlim),
-        y = c(y, y),
-        z = c(zlim[1], zlim[1]),
-        col = "grey95",
-        lwd = 1,
-        xpd = TRUE,
-      )
-    }
-  }
   # Return the data
   
   data3js = light3js(
