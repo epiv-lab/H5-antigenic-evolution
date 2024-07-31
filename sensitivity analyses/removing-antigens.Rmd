@@ -1,0 +1,102 @@
+---
+title: "Removing antigens from map - 3D"
+output: html_document
+date: "2024-07-31"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache=T, warning = F, message=F)
+library(Racmacs)
+```
+
+```{r info, echo=F, cache=FALSE}
+print(Sys.time())
+print(paste("Racmacs", packageVersion("Racmacs")))
+```
+
+## Introduction
+
+Removing antigens in 3d maps.
+
+## Methods & results
+
+```{r get-data}
+map_conservative_sd_1.5_n3_3d <- read.acmap("input/map_conservative_sd_1.5_n3.ace")
+```
+
+```{r rm-sera}
+maps <- NULL
+for (i in 1:numAntigens(map_conservative_sd_1.5_n3_3d)){
+  maps[[i]] <- map_conservative_sd_1.5_n3_3d
+  maps[[i]] <- removeAntigens(maps[[i]], i)
+  maps[[i]] <- optimizeMap(maps[[i]], 3, 1000)
+}
+```
+
+```{r procs}
+procs <- NULL
+for (i in 1:numAntigens(map_conservative_sd_1.5_n3_3d)){
+  procs[[i]] <- procrustesData(map_conservative_sd_1.5_n3_3d, maps[[i]])
+}
+```
+
+```{r, fig.dim=c(7,7)}
+plot(sapply(procs, "[[", 5))
+```
+
+```{r, fig.dim=c(7,7)}
+med_dist <- colMeans(rbind(sapply(procs, "[[", 1),
+           sapply(procs, "[[", 2)), na.rm=T)
+plot(med_dist)
+which(med_dist>0.3)
+```
+
+```{r save-files, cache=F}
+save(maps, procs, file="output/rm-ag-3d-cons-n3.RData")
+write.csv(med_dist, "output/rm-ag-3d-cons-n3-median-dist.csv")
+```
+
+[median dist csv](output/rm-ag-3d-cons-n3-median-dist.csv)
+
+```{r more-info, cache=F}
+which(sapply(procs, "[[", 5)>0.5)
+
+agNames(map_conservative_sd_1.5_n3_3d)[c(6,13, 40, 66)]
+
+# compare 6 to full map
+pc <- procrustesMap(map_conservative_sd_1.5_n3_3d, maps[[6]])
+view(pc)
+
+# compare 13 to full map
+pc <- procrustesMap(map_conservative_sd_1.5_n3_3d, maps[[13]])
+view(pc)
+
+# compare 41 to full map
+pc <- procrustesMap(map_conservative_sd_1.5_n3_3d, maps[[41]])
+view(pc)
+
+# compare 66 to full map
+pc <- procrustesMap(map_conservative_sd_1.5_n3_3d, maps[[66]])
+view(pc)
+
+```
+
+```{r proc-data}
+procrustesData(maps[[6]], maps[[13]])$total_rmsd
+procrustesData(maps[[6]], maps[[41]])$total_rmsd
+procrustesData(maps[[6]], maps[[66]])$total_rmsd
+procrustesData(maps[[13]], maps[[41]])$total_rmsd
+procrustesData(maps[[13]], maps[[66]])$total_rmsd
+procrustesData(maps[[41]], maps[[66]])$total_rmsd
+```
+
+
+## Discussion
+
+Issues observed:
+
+1. Two antigens removed result in movement of the light blue (2-3-4-2) cluster as seen with sera removal
+2. A single classical antigen likely hemisphering, which is unconcerning
+3. Small changes of multiple clades associated with the movement of a classical serum.
+
+
