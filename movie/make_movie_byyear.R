@@ -30,10 +30,10 @@ lims = list(x=c(-14,12), y=c(-12,14), z=c(-10,16))
 
 #if you just want to have a test drive set below to TRUE
 test_drive = TRUE #default FALSE
-window_length = 5 #default 5
-start_year = 1989 #default 1989
+window_length = 2 #default 5
+start_year = 1996 #default 1989
 end_year = 2022 #default 2022
-angle_step = 5 #default 5
+angle_step = 2 #default 5
 end_angle = 360 #default 360
 zoom =4 #default 4, increase if res or video is bad
 
@@ -48,12 +48,16 @@ if (test_drive){
 }
 
 years_list = seq(start_year, end_year, by=window_length)
-angles = seq(0, end_angle, angle_step)
+#angles = seq(0, end_angle, angle_step) #for 360 degree rotation
+angles = c(seq(0, 180, 2), rev(seq(2, 178, 2))) #for oscillating movement
 do.call(file.remove, list(list.files("./movie_images/", full.names = TRUE)))
 counter = 1
 pb = txtProgressBar(min = 0, max = length(years_list)*length(angles), 
                     initial = 0, title="Generating Scenes", style=3) 
 
+#### to fix webshot after mac standby
+f <- chromote::default_chromote_object()
+f$close() 
 
 for (year in years_list){
   
@@ -65,7 +69,13 @@ for (year in years_list){
   for (angle in angles){
     rotated_map = rotateMap(map, angle, axis = 'y')
     map_data3js = convert_map_to_data3js(rotated_map, years_to_add=years,
-                                         lims=lims)
+                                         lims=lims,
+                                         antigen_radius = 0.4,
+                                         serum_width = 0.8)
+   map_data3js <- legend3js(map_data3js,
+                             legend = maplegend[,1],
+                             fill   = maplegend[,2])
+
     #convert racmap to data3js so one can add objects to it via r3js. some options
     #which might be useful are:
     #show.map.antigens = TRUE,
@@ -80,9 +90,9 @@ for (year in years_list){
     #serum_width = 2.5,
     #serum_opacity = 1,
     #serum_linewidth = 0.2,
-    save3js(map_data3js, map_save_name, rotation=c(0,0,0))
+    save3js(map_data3js, map_save_name, rotation=c(0,1,0)) #default rotation = c(0,0,0)
     ss_save_name = paste0(paste0('./movie_images/',as.character(counter)), '.png')
-    webshot(map_save_name, ss_save_name, quiet=TRUE, zoom=zoom)
+    webshot(map_save_name, ss_save_name, quiet=TRUE, zoom=zoom, vwidth = 744) #vwidth to make it square
     
     setTxtProgressBar(pb,counter)
     counter = counter + 1
