@@ -13,8 +13,8 @@ if (!grepl('linux', version$os)) {
 }
 
 
-name = "map_3D_conservative_sd_1.5_n3"
-path = paste0("../map_making/output/", name,".ace")
+name = "H5_map_for_movie"
+path = paste0("./input/", name,".ace")
 map_save_name = "./movie_images/temp.html"
 map = read.acmap(path)
 
