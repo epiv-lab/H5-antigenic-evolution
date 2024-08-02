@@ -3,10 +3,10 @@
 
 rm(list = ls())
 library(Racmacs)
-
+library(dplyr)   
 #files
-ag_boot_vol <- read.csv("./map_conservative_sd_1.5_n3_bayesian_ag-2.csv")
-map <- read.acmap("input/map.ace") #edit based on input map Sina
+ag_boot_vol <- read.csv("./tables/vol_ag.csv")
+map <- read.acmap("./input/H5_map.ace") #edit based on input map Sina
 
 #convert NA to 0
 ag_boot_vol[is.na(ag_boot_vol)] <- 0
@@ -37,9 +37,5 @@ srOutline(map_bootstrap_cols) <- "black"
 agSize(map_bootstrap_cols) <- 3
 agFill(map_bootstrap_cols) <- ag_boot_radius$col[match(agNames(map), rownames(ag_boot_radius))] 
 
-map_bootstrap_cols <- setLegend(map_bootstrap_cols, 
-                                legend = rev(round(seq(min(ag_boot_radius$total), max(ag_boot_radius$total), length.out = 7), digits = 1)), 
-                                fill   = rev("#FAEBDDFF", "#F6AA82FF", "#F06043FF", "#CB1B4FFF", "#841E5AFF", "#3F1B44FF", "#03051AFF")) #using viridis::viridis(n=7, option = "rocket", direction = -1)
-
-Racmacs::view(map_bootstrap_cols, options = RacViewer.options(point.opacity = 0.8))
+view(map_bootstrap_cols, options = RacViewer.options(point.opacity = 0.8))
 
