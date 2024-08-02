@@ -3,7 +3,6 @@ rm(list = ls())
 #load packages
 library(Racmacs)
 library(r3js)
-#packages also needed: grDevices, viridis
 
 #input code & data
 source("antibody_profile.R")
