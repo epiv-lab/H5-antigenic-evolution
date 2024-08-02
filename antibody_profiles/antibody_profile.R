@@ -109,6 +109,22 @@ plot_acmap3js <- function(map){
   
 }
 
+### Color pallete for antibody profiles
+col_range <- seq(from = -1, to = 7, length.out = 110)
+#done using viridis::viridis(n=length(col_range), option = "rocket", direction = -1)
+col_val <- c("#FAEBDDFF", "#FAE7D7FF", "#F9E4D3FF", "#F9E0CDFF", "#F9DDC8FF", "#F8D9C4FF", "#F8D6BEFF", "#F8D2B9FF", "#F7CFB4FF", "#F7CCAFFF",
+              "#F7C8A9FF", "#F7C5A5FF", "#F6C19FFF", "#F6BD9AFF", "#F6B995FF", "#F6B691FF", "#F6B28CFF", "#F6AE87FF", "#F6AB83FF", "#F6A77FFF",
+              "#F6A37AFF", "#F6A077FF", "#F69C72FF", "#F5976EFF", "#F5946BFF", "#F59067FF", "#F58B63FF", "#F58860FF", "#F4835CFF", "#F47F58FF",
+              "#F47C55FF", "#F37751FF", "#F3734EFF", "#F26F4CFF", "#F26A48FF", "#F16646FF", "#F16244FF", "#F05D42FF", "#EF5840FF", "#EE543FFF",
+              "#ED4F3EFF", "#EC4A3EFF", "#EB453EFF", "#E8413EFF", "#E73D3FFF", "#E53940FF", "#E23542FF", "#E03143FF", "#DE2D44FF", "#DB2A46FF",
+              "#D82748FF", "#D62349FF", "#D2204CFF", "#CF1E4DFF", "#CC1C4EFF", "#C91951FF", "#C51852FF", "#C21753FF", "#BD1655FF", "#BA1656FF",
+              "#B61657FF", "#B31758FF", "#AF1759FF", "#AB185AFF", "#A7195AFF", "#A3195BFF", "#9F1A5BFF", "#9B1B5BFF", "#971C5BFF", "#931C5BFF",
+              "#8E1D5BFF", "#8B1D5BFF", "#871E5BFF", "#821E5AFF", "#7F1E5AFF", "#7B1F59FF", "#761F58FF", "#731F58FF", "#6F1F57FF", "#6B1F56FF",
+              "#681F55FF", "#641F54FF", "#601F52FF", "#5C1E51FF", "#581E4FFF", "#541E4EFF", "#511E4DFF", "#4D1D4BFF", "#491D49FF", "#461C48FF",
+              "#421B45FF", "#3F1B43FF", "#3C1A42FF", "#37193FFF", "#34193DFF", "#31183BFF", "#2D1738FF", "#2A1636FF", "#271534FF", "#231331FF",
+              "#20122EFF", "#1C112CFF", "#190F29FF", "#160E27FF", "#120D25FF", "#0F0B22FF", "#0B0920FF", "#08081EFF", "#05061BFF", "#03051AFF")
+
+
 ### Function to generate antibody profiles
 
 antibody_profile <- function(map, serum, na_titers = F){
@@ -121,7 +137,7 @@ antibody_profile <- function(map, serum, na_titers = F){
   srShown(map) <- F
   
   #### All antigens white-ish to start with
-  agFill(map) <- grDevices::adjustcolor("white", alpha.f = 0.5) 
+  agFill(map) <- "#FFFFFF80"
   
   #### Get log titers of serum for landscape
   logtiters <- logtiterTable(map)[,serum]
@@ -132,10 +148,6 @@ antibody_profile <- function(map, serum, na_titers = F){
    agShown(map)[which(is.na(logtiters))] <- F
   }
   
-  #### Make color palette
-  col_range <- seq(from = -1, to = 7, length.out = 110)
-  col_val <- viridis::viridis(n=length(col_range), option = "rocket", direction = -1)
-
   #### Color map antigens by (mean) log titer
   color_map <- function(map, 
                         log_titers){
