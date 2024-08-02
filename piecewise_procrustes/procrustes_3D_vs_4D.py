@@ -13,8 +13,8 @@ import numpy as np
 
 if __name__=="__main__":
 
-  map_3D = pr.read_racmap("../map_making/output/map_3D_conservative_sd_1.5_n4.ace")
-  map_4D = pr.read_racmap("../map_making/output/map_4D_conservative_sd_1.5_n4.ace")
+  map_3D = pr.read_racmap("./input/H5_map_3D_n4.ace")
+  map_4D = pr.read_racmap("./input/H5_map_4D_n4.ace")
 
   final_stresses = []
 
