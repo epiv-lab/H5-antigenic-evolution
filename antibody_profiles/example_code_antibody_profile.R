@@ -8,7 +8,6 @@ library(r3js)
 #input code & data
 source("antibody_profile.R")
 h5_map <- read.acmap("input/H5_map.ace")
-maps_merged_whole_overlay <- readRDS("output/maps_merged_whole_overlay_march24.Rdata")
 
 antibody_profile(map = h5_map, 
                  serum = 14, #the index number of the serum
