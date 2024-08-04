@@ -2,11 +2,11 @@
 
 Custom code supporting the study by Kok et al., "A vaccine antigen central in influenza A(H5) virus antigenic space confers subtype-wide immunity", in which the first global characterization of the antigenic evolution of A(H5) influenza viruses was performed using antigenic cartography and a unique dataset of over 100 A(H5) antigens and 30 ferret sera. This novel knowledge was then leveraged to design of a broadly protective A(H5) vaccine antigen covering antigenic space widely.
 
-Most of the analyses performed in the study, including the map making and map testing, are available through the [R Racmacs library](https://acorg.github.io/Racmacs/). Additional analyses using code not directly available in the Racmacs libray were performed. Code written for these analyses is available in this repository.
+Most of the analyses performed in the study, including the map making and map testing, are available through the [Racmacs](https://acorg.github.io/Racmacs/) library. Additional analyses using code not directly available in the Racmacs libray were performed. Code written for these analyses is available in this repository.
 
 ## Bootstrap analysis
 
-Code to calculate the volumes of Bayesian bootstrap blobs, computed through the ‘bootstrapBlobs’ function in Racmacs. Python code using PyRacmacs (S. Tureli, PyRacmacs. (2024). https://github.com/iAvicenna/PyRacmacs) and fitting a triangular mesh to each bootstrap point using the package trimesh (M. Dawson-Haggerty, trimesh. version 3.2.0 (2020). https://trimsh.org/). R code used in Kok et al. 2024 to color-code antigens in the A(H5) antigenic map according to bootstrap volume radii (Data S3F) is also provided. The R code uses, amongst others, Racmacs and r3js libraries.
+Code to calculate the volumes of Bayesian bootstrap blobs, computed through the ‘bootstrapBlobs’ function in Racmacs. Python code using [PyRacmacs](https://github.com/iAvicenna/PyRacmacs) (S. Tureli, PyRacmacs. (2024). ) and fitting a triangular mesh to each bootstrap point using the package trimesh (M. Dawson-Haggerty, trimesh. version 3.2.0 (2020). https://trimsh.org/). R code used in Kok et al. 2024 to color-code antigens in the A(H5) antigenic map according to bootstrap volume radii (Data S3F) is also provided. The R code uses, amongst others, Racmacs and r3js libraries.
 
 ## Piecewise procrustes analysis
 
