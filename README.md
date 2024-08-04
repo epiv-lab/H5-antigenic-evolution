@@ -1,8 +1,8 @@
 # A(H5) antigenic map and antigenically central antigen design, Kok et al. 2024
 
-Custom code supporting the study by Kok et al., "A vaccine antigen central in influenza A(H5) virus antigenic space confers subtype-wide immunity", in which the first global characterization of the antigenic evolution of A(H5) influenza viruses using antigenic cartography and a unique dataset of over 100 A(H5) antigens and 30 ferret sera was performed. This novel knowledge was then leveraged to design of a broadly protective A(H5) vaccine antigen covering widely antigenic space.
+Custom code supporting the study by Kok et al., "A vaccine antigen central in influenza A(H5) virus antigenic space confers subtype-wide immunity", in which the first global characterization of the antigenic evolution of A(H5) influenza viruses was performed using antigenic cartography and a unique dataset of over 100 A(H5) antigens and 30 ferret sera. This novel knowledge was then leveraged to design of a broadly protective A(H5) vaccine antigen covering antigenic space widely.
 
-Most of the analyses performed in the study, including the map making and map testing, are available through the R Racmacs library available at https://acorg.github.io/Racmacs/. Additional analyses using code not directly available in the Racmacs libray were performed. Code written for these analyses is available in this repository.
+Most of the analyses performed in the study, including the map making and map testing, are available through the [R Racmacs library](https://acorg.github.io/Racmacs/). Additional analyses using code not directly available in the Racmacs libray were performed. Code written for these analyses is available in this repository.
 
 ## Bootstrap analysis
 
