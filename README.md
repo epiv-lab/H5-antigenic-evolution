@@ -1,4 +1,3 @@
-(https://zenodo.org/badge/720166908.svg)
 
 # A(H5) antigenic map and antigenically central antigen design, Kok et al. 2024
 
