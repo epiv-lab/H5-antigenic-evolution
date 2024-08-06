@@ -1,3 +1,5 @@
+(https://zenodo.org/badge/720166908.svg)
+
 # A(H5) antigenic map and antigenically central antigen design, Kok et al. 2024
 
 Custom code supporting the study by Kok et al., "A vaccine antigen central in influenza A(H5) virus antigenic space confers subtype-wide immunity", in which the first global characterization of the antigenic evolution of A(H5) influenza viruses was performed using antigenic cartography and a unique dataset of over 100 A(H5) antigens and 30 ferret sera. This novel knowledge was then leveraged to design of a broadly protective A(H5) vaccine antigen covering antigenic space widely.
