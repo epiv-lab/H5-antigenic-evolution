@@ -2,7 +2,7 @@
 ### Analysis described in supplementary text S3
 rm(list = ls())
 library(Racmacs)
-map <- read.acmap("../bootstrap_analysis/input/H5_map.ace") 
+map <- read.acmap("./input/H5_map_3D_n4.ace") 
 
 #read in files
 ag_ppc_1 <- read.csv("./output/ag_ppc_data_1.csv", row.names = 1)
