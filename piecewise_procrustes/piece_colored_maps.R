@@ -4,7 +4,7 @@ colors = list("#1f77b4","#d62728","#9467bd","#8c564b",
               "#7f7f7f","#bcbd22","#17becf")
 
   
-map = read.acmap("../map_making/output/map_3D_conservative_sd_1.5_n4.ace")
+map = read.acmap("./input/H5_map_3D_n4.ace")
 compare_sera = TRUE
 
 for (npieces in list(1,2,3,4,5)){
