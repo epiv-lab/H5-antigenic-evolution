@@ -10,7 +10,7 @@ conf = 0.68
 smoothing = 8
 method = "bayesian"
 
-map_path = "../piecewise_procrustes/input/H5_map_3D_n4.ace"
+map_path = "./inputs/H5_merge_n3_march_2025.ace"
 save_path = "./outputs/bootstrapped_map_bayesian.ace"
 
 map = read.acmap(map_path)

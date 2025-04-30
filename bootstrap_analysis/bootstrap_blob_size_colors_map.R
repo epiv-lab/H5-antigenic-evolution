@@ -6,7 +6,7 @@ library(Racmacs)
 library(dplyr)   
 #files
 ag_boot_vol <- read.csv("./tables/vol_ag.csv")
-map <- read.acmap("../piecewise_procrustes/input/H5_map_3D_n4.ace")
+map <- read.acmap("./inputs/H5_merge_n3_march_2025.ace")
 
 #convert NA to 0
 ag_boot_vol[is.na(ag_boot_vol)] <- 0
