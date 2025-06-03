@@ -169,7 +169,7 @@ antibody_profile <- function(map, serum, na_titers = F){
   
   #### make r3js object using function above
   data3js <- plot_acmap3js(plotmap)
-  ag_measurable <- which(logtiters>= 0)
+  ag_measurable <- which(logtiters > -1)
   
   for(agnum in ag_measurable){
     ag_coords <- agCoords(plotmap)[agnum,]
@@ -188,7 +188,7 @@ antibody_profile <- function(map, serum, na_titers = F){
   max_val <- ceiling(max(logtiters, na.rm = T))
   data3js <- legend3js(
     data3js,
-    legend = rev(c("<10", 2^(0:7)*10)),
+    legend = rev(c("Below detection", 2^(0:7)*10)),
     fill   = rev(sapply(-1:7, function(x){
       col_val[which.min(abs(x - col_range))]
     }))
